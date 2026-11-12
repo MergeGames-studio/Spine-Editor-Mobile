@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#0E1116</color>
+    <color name="panel">#161B22</color>
+    <color name="panel2">#1E252F</color>
+    <color name="panel_line">#2A3440</color>
+    <color name="grid">#1B2430</color>
+    <color name="axis">#2F3C49</color>
+    <color name="accent">#35D0BA</color>
+    <color name="accent_dim">#1F6F64</color>
+    <color name="selection">#FFB74D</color>
+    <color name="danger">#EF5350</color>
+    <color name="text">#E6EDF3</color>
+    <color name="text_dim">#8B98A5</color>
+    <color name="colorPrimary">@color/panel</color>
+    <color name="colorPrimaryDark">@color/bg</color>
+    <color name="colorAccent">@color/accent</color>
+</resources>

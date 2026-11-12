@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/panel"
+        app:subtitleTextColor="@color/text_dim"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/panel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp">
+
+        <TextView
+            android:id="@+id/selectedText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/no_selection"
+            android:textColor="@color/text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnProperties"
+            style="@style/ChipText"
+            android:layout_marginStart="6dp"
+            android:text="@string/properties" />
+
+        <TextView
+            android:id="@+id/btnHierarchy"
+            style="@style/ChipText"
+            android:layout_marginStart="6dp"
+            android:text="@string/hierarchy" />
+
+        <TextView
+            android:id="@+id/btnSkin"
+            style="@style/ChipText"
+            android:layout_marginStart="6dp"
+            android:text="@string/skin" />
+
+        <TextView
+            android:id="@+id/btnTimeline"
+            style="@style/ChipText"
+            android:layout_marginStart="6dp"
+            android:text="@string/hide_timeline" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/panel_line" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="80dp">
+
+        <com.bandjou_mergegames.spineeditormobile.editor.EditorView
+            android:id="@+id/editorView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnZoomIn"
+                style="@style/ZoomButton"
+                android:contentDescription="@string/canvas_zoom"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/btnZoomOut"
+                style="@style/ZoomButton"
+                android:contentDescription="@string/canvas_zoom"
+                android:text="−" />
+
+            <TextView
+                android:id="@+id/btnFit"
+                style="@style/ZoomButton"
+                android:layout_width="40dp"
+                android:contentDescription="@string/fit"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:text="@string/fit"
+                android:textSize="9sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/timelinePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/panel"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/panel_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <Spinner
+                android:id="@+id/animationSpinner"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_chip"
+                android:paddingStart="10dp"
+                android:paddingEnd="22dp"
+                android:popupBackground="@color/panel2"
+                android:spinnerMode="dropdown" />
+
+            <ImageButton
+                android:id="@+id/btnPlay"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_play"
+                android:contentDescription="@string/play"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_play" />
+
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="monospace"
+                android:text="0.00 / 0.00 s"
+                android:textColor="@color/text_dim"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/btnCollapseTimeline"
+                style="@style/ChipText"
+                android:layout_marginStart="8dp"
+                android:text="@string/collapse"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:id="@+id/btnAddAnimation"
+                    style="@style/ChipText"
+                    android:text="@string/add_animation" />
+
+                <TextView
+                    android:id="@+id/btnDeleteAnimation"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/delete_animation" />
+
+                <TextView
+                    android:id="@+id/btnAddKey"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/add_key" />
+
+                <TextView
+                    android:id="@+id/btnDeleteKey"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/delete_key" />
+
+                <TextView
+                    android:id="@+id/btnAddSkinKey"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/add_skin_key" />
+
+                <TextView
+                    android:id="@+id/btnDeleteSkinKey"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/delete_skin_key" />
+
+                <TextView
+                    android:id="@+id/btnLoop"
+                    style="@style/ChipText"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/loop_on" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <com.bandjou_mergegames.spineeditormobile.editor.TimelineView
+            android:id="@+id/timelineView"
+            android:layout_width="match_parent"
+            android:layout_height="118dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/panel_line" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/panel"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/toolSelect"
+                style="@style/ToolButton"
+                android:text="@string/tool_select" />
+
+            <TextView
+                android:id="@+id/toolBone"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_bone" />
+
+            <TextView
+                android:id="@+id/toolShape"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_shape" />
+
+            <TextView
+                android:id="@+id/toolMove"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_move" />
+
+            <TextView
+                android:id="@+id/toolRotate"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_rotate" />
+
+            <TextView
+                android:id="@+id/toolScale"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_scale" />
+
+            <TextView
+                android:id="@+id/toolPan"
+                style="@style/ToolButton"
+                android:layout_marginStart="6dp"
+                android:text="@string/tool_pan" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/panel_line" />
+
+            <TextView
+                android:id="@+id/btnDeleteTool"
+                style="@style/ToolButton"
+                android:text="@string/tool_delete" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>
